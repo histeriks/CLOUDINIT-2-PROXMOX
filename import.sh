@@ -32,6 +32,7 @@ echo -e "\e[93mdownloading and customizing ubuntu cloud image...\e[0m"
 sleep 2
 
 wget https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
+apt-get install libguestfs-tools -y
 virt-customize -a focal-server-cloudimg-amd64.img --run-command "sed -i 's/.*PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config"
 virt-customize -a focal-server-cloudimg-amd64.img --install qemu-guest-agent
 
